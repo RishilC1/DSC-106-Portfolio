@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rishil Chintalapati</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="../">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="./">Contact</a>
+        <a href="../resume/">Resume</a>
+        <a href="https://github.com/RishilC1" target="_blank">GitHub</a>
+    </nav>
+
+    <h1>Contact</h1>
+
+    <form
+        action="mailto:rchintalapati@ucsd.edu"
+        method="POST"
+        enctype="text/plain"
+    >
+        <label>
+            Email
+            <input
+                name="email"
+                type="email"
+                value="visitor@example.com"
+            >
+        </label>
+
+        <label>
+            Subject
+            <input
+                name="subject"
+                value="Hello from your website"
+            >
+        </label>
+
+        <label>
+            Message
+            <textarea name="body" rows="6" cols="40">I found your website and wanted to get in touch.</textarea>
+        </label>
+
+        <button>Send message</button>
+    </form>
+</body>
+</html>

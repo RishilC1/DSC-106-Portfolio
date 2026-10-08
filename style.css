@@ -38,3 +38,45 @@ nav a:hover,
 nav a.current {
   border-bottom-color: var(--color-accent);
 }
+form {
+  /* each label borrows the same two columns as the form */
+  display: grid;
+  gap: 1em;
+  grid-template-columns: auto 1fr;
+  max-width: 50em;
+}
+
+form label {
+  align-items: baseline;
+  display: grid;
+  gap: 1em;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+
+form input,
+form textarea,
+form button {
+  font: inherit;
+}
+
+form input,
+form textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+form button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+@media (max-width: 40em) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  form label {
+    grid-template-columns: subgrid;
+  }
+}

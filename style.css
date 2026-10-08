@@ -80,3 +80,47 @@ form button {
     grid-template-columns: subgrid;
   }
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+}
+
+img {
+  max-width: 100%;
+}
+
+.projects {
+  /* auto fill changes the number of cards when the window resizes */
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+}
+
+.projects article {
+  border: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+  display: grid;
+  gap: 1em;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  margin: 0;
+  padding: 1em;
+}
+
+.projects h2 {
+  margin: 0;
+}
+
+.projects img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}

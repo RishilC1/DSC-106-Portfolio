@@ -5,3 +5,36 @@ body {
   margin-inline: auto;
   padding: 1em;
 }
+html {
+  --color-accent: oklch(65% 50% 250);
+  accent-color: var(--color-accent);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 2em;
+}
+
+nav ul,
+nav li {
+  /* lets the links sit right inside the flex row */
+  display: contents;
+}
+
+nav a {
+  flex: 1;
+  min-width: 5em;
+  border-bottom: 0.4em solid transparent;
+  color: inherit;
+  padding: 0.5em;
+  padding-bottom: 0.1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a.current {
+  border-bottom-color: var(--color-accent);
+}

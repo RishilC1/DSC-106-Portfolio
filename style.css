@@ -6,21 +6,17 @@ body {
   padding: 1em;
 }
 html {
+  color-scheme: light dark;
   --color-accent: oklch(65% 50% 250);
   accent-color: var(--color-accent);
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 2em;
-}
-
-nav ul,
-nav li {
-  /* lets the links sit right inside the flex row */
-  display: contents;
 }
 
 nav a {
@@ -34,9 +30,26 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover,
 nav a.current {
+  border-bottom-color: var(--border-color);
+  font-weight: bold;
+}
+
+nav a:hover {
   border-bottom-color: var(--color-accent);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+/* Reserve space so the switcher does not overlap navigation on narrow screens. */
+body {
+  padding-top: 3.5rem;
 }
 form {
   /* each label borrows the same two columns as the form */
@@ -54,6 +67,7 @@ form label {
   grid-template-columns: subgrid;
 }
 
+select,
 form input,
 form textarea,
 form button {

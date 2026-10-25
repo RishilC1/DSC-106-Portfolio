@@ -6,6 +6,7 @@
     <title>Rishil Chintalapati: Personal site and portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="global.js"></script>
+    <script type="module" src="index.js"></script>
 </head>
 <body>
 <h1>Rishil Chintalapati</h1>
@@ -15,5 +16,16 @@
     alt="My favorite soccer team and my favorite players"
 />
 </p>
+<section aria-labelledby="latest-projects-title">
+    <h2 id="latest-projects-title">Latest Projects</h2>
+    <div class="projects" aria-live="polite"><p>Loading projects…</p></div>
+    <p><a href="projects/">View all projects</a></p>
+</section>
+<section aria-labelledby="github-stats-title">
+    <h2 id="github-stats-title">My GitHub Stats</h2>
+    <div id="profile-stats" aria-live="polite"><p>Loading GitHub stats…</p></div>
+    <p><a href="https://github.com/RishilC1" target="_blank" rel="noopener noreferrer">View my GitHub profile</a></p>
+</section>
+<noscript>Enable JavaScript to load projects and GitHub stats.</noscript>
 </body>
 </html>

@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Project 1: Ultra-Processed Snacks",
+    "year": 2026,
+    "image": "images/projects/project-1.png",
+    "imageAlt": "Four bar charts comparing predicted ultra-processed snack shares at Whole Foods, Target, and Walmart.",
+    "description": "An expository visualization using GroceryDB to compare ultra-processed snack shares across Whole Foods, Target, and Walmart. Small multiples reveal how the comparison changes across snack categories.",
+    "url": "lib/project-1.pdf"
+  },
+  {
+    "title": "Project 2: Child Mortality and Convergence",
+    "year": 2026,
+    "image": "images/projects/project-2.png",
+    "imageAlt": "Percentile fan chart showing under-five mortality rates across countries from 1960 to 2019.",
+    "description": "Persuasive visualizations of under-five mortality in 112 countries from 1960 to 2019. Linear and logarithmic scales show how absolute gaps can shrink while relative gaps grow, with an interactive chart to explore both measures.",
+    "url": "https://nahatav.github.io/dsc106-project2/"
+  },
+  {
+    "title": "StyleSync",
+    "year": 2026,
+    "image": "images/projects/stylesync.svg",
+    "imageAlt": "Illustration of a shirt, trousers, and matching wardrobe colors.",
+    "description": "A wardrobe planning tool that classifies clothing photos, extracts colors and attributes, and recommends outfits by occasion. It combines fine-tuned ResNet-50 models with a rule-based outfit scoring engine.",
+    "url": "https://github.com/manasamaddi1/StyleSync"
+  },
+  {
+    "title": "FirmScape",
+    "year": 2026,
+    "image": "images/projects/firmscape.svg",
+    "imageAlt": "Illustration of a city skyline representing business activity and housing markets.",
+    "description": "A machine learning and Streamlit dashboard project exploring relationships between business formation, industry concentration, and U.S. housing price growth using regression and classification models.",
+    "url": "https://github.com/manasamaddi1/FirmScape"
+  }
+]

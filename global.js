@@ -95,3 +95,82 @@ form?.addEventListener('submit', (event) => {
 
   location.href = `${form.action}?${parameters.join('&')}`;
 });
+
+// Load reusable data from a local JSON file or an API.
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+    throw error;
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!(containerElement instanceof Element)) {
+    throw new TypeError('A valid projects container is required.');
+  }
+  if (!Array.isArray(projects)) {
+    throw new TypeError('Projects must be an array.');
+  }
+  if (!/^h[1-6]$/.test(headingLevel)) {
+    throw new TypeError('Use a heading level from h1 to h6.');
+  }
+
+  // Re-rendering replaces the previous cards instead of duplicating them.
+  containerElement.replaceChildren();
+  if (projects.length === 0) {
+    containerElement.textContent = 'No projects to display yet.';
+    return;
+  }
+
+  for (const project of projects) {
+    const article = document.createElement('article');
+    const heading = document.createElement(headingLevel);
+    const title = project.title || 'Untitled project';
+
+    if (project.url) {
+      const link = document.createElement('a');
+      link.href = new URL(project.url, baseURL).href;
+      link.textContent = title;
+      if (link.host !== location.host) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      heading.append(link);
+    } else {
+      heading.textContent = title;
+    }
+
+    const img = document.createElement('img');
+    img.src = new URL(project.image || 'images/projects/placeholder.svg', baseURL).href;
+    img.alt = project.imageAlt || title;
+    img.loading = 'lazy';
+    img.addEventListener('error', () => {
+      img.src = new URL('images/projects/placeholder.svg', baseURL).href;
+    }, { once: true });
+
+    const details = document.createElement('div');
+    const description = document.createElement('p');
+    description.textContent = project.description || 'Description coming soon.';
+    details.append(description);
+
+    if (project.year) {
+      const year = document.createElement('p');
+      year.className = 'project-year';
+      year.textContent = project.year;
+      details.append(year);
+    }
+
+    article.append(heading, img, details);
+    containerElement.append(article);
+  }
+}
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${encodeURIComponent(username)}`);
+}

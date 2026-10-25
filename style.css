@@ -129,13 +129,15 @@ img {
   padding: 1em;
 }
 
-.projects h2 {
+.projects h2,
+.projects h3 {
   margin: 0;
 }
 
 .projects img {
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  background: white;
   width: 100%;
 }
 .resume section {
@@ -162,4 +164,61 @@ img {
 
 .resume li {
   margin-block: 0.5em;
+}
+.projects h2,
+.projects h3 {
+  overflow-wrap: anywhere;
+}
+
+.projects h2 a,
+.projects h3 a {
+  color: inherit;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.15em;
+}
+
+.projects h2 a:hover,
+.projects h3 a:hover {
+  color: var(--color-accent);
+}
+
+.projects p {
+  margin: 0;
+}
+
+.projects .project-year {
+  margin-top: 0.75em;
+  color: color-mix(in oklch, canvastext 65%, canvas);
+}
+
+body > section {
+  margin-block: 3em;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5em;
+}
+
+#profile-stats dt {
+  color: color-mix(in oklch, canvastext 65%, canvas);
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+#profile-stats dd {
+  margin: 0.25em 0 0;
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+@media (max-width: 40em) {
+  #profile-stats dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects {
+    grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr));
+  }
 }

@@ -10,9 +10,17 @@ async function loadLatestProjects() {
   }
 }
 
+const refreshStats = document.querySelector('#refresh-stats');
+const statsStatus = document.querySelector('#stats-status');
+
 async function loadGitHubStats() {
   const profileStats = document.querySelector('#profile-stats');
-  if (!profileStats) return;
+  if (!profileStats || !refreshStats || !statsStatus || refreshStats.disabled) return;
+
+  refreshStats.disabled = true;
+  refreshStats.textContent = 'Refreshing…';
+  statsStatus.textContent = 'Loading live data from GitHub…';
+  profileStats.setAttribute('aria-busy', 'true');
 
   try {
     const githubData = await fetchGitHubData('RishilC1');
@@ -33,9 +41,22 @@ async function loadGitHubStats() {
       dl.append(group);
     }
     profileStats.replaceChildren(dl);
+    statsStatus.textContent = `Last refreshed: ${new Date().toLocaleTimeString()}`;
   } catch (error) {
-    profileStats.textContent = 'GitHub stats are temporarily unavailable. Please refresh to try again.';
+    statsStatus.textContent = 'Could not refresh GitHub stats. Please try again.';
+    if (!profileStats.querySelector('dl')) {
+      profileStats.textContent = 'GitHub stats are temporarily unavailable.';
+    }
+  } finally {
+    refreshStats.disabled = false;
+    refreshStats.textContent = 'Refresh stats';
+    profileStats.setAttribute('aria-busy', 'false');
   }
+}
+
+if (refreshStats) {
+  refreshStats.hidden = false;
+  refreshStats.addEventListener('click', loadGitHubStats);
 }
 
 // A slow or unavailable API should not hold up the project cards.

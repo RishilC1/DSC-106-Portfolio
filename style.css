@@ -222,3 +222,18 @@ body > section {
     grid-template-columns: repeat(auto-fill, minmax(min(15em, 100%), 1fr));
   }
 }
+
+#refresh-stats {
+  font: inherit;
+  cursor: pointer;
+}
+
+#refresh-stats:disabled {
+  cursor: wait;
+}
+
+#stats-status {
+  color: color-mix(in oklch, canvastext 65%, canvas);
+  font-size: 0.9em;
+  min-height: 1.5em;
+}

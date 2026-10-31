@@ -237,3 +237,136 @@ body > section {
   font-size: 0.9em;
   min-height: 1.5em;
 }
+
+/* Lab 5: the chart summarizes search results, and the year selects project cards. */
+.projects-chart {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+#projects-pie-plot {
+  width: min(100%, 13em);
+  flex: 0 1 13em;
+  overflow: visible;
+  margin-block: 0.5em;
+}
+
+#projects-pie-plot[hidden] {
+  display: none;
+}
+
+#projects-pie-plot path {
+  cursor: pointer;
+  stroke: canvas;
+  stroke-width: 0.6;
+  transition: opacity 200ms, fill 200ms;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path:focus-visible {
+  outline: none;
+  stroke: canvastext;
+  stroke-width: 1.5;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+  flex: 1 1 12em;
+  gap: 1em;
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid color-mix(in oklch, canvastext 30%, transparent);
+  border-radius: 0.5em;
+}
+
+.legend:empty {
+  display: none;
+}
+
+.legend-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0.5em;
+  border: 1px solid transparent;
+  border-radius: 0.3em;
+  cursor: pointer;
+  text-align: left;
+}
+
+.swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: var(--color);
+  border-radius: 0.2em;
+}
+
+#projects-pie-plot path.selected {
+  fill: oklch(60% 0.22 330);
+}
+
+.legend-item.selected {
+  --color: oklch(60% 0.22 330) !important;
+}
+
+.legend-item.selected .legend-button {
+  border-color: currentColor;
+  font-weight: bold;
+}
+
+.legend-button:hover,
+.legend-button:focus-visible {
+  background: color-mix(in oklch, canvastext 10%, canvas);
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.project-filters label {
+  flex-basis: 100%;
+  font-weight: bold;
+}
+
+.searchBar {
+  flex: 1 1 16em;
+  min-width: 0;
+  padding: 0.65em;
+  font: inherit;
+}
+
+#clear-year {
+  padding: 0.65em;
+  font: inherit;
+  cursor: pointer;
+}
+
+#filter-status {
+  color: color-mix(in oklch, canvastext 75%, canvas);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #projects-pie-plot path {
+    transition: none;
+  }
+}
+
+body > .project-overview {
+  margin-block: 1.5em;
+}

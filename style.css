@@ -370,3 +370,126 @@ body > section {
 body > .project-overview {
   margin-block: 1.5em;
 }
+
+/* Lab 6: Git history statistics and scatterplot. */
+.meta-page main > p {
+  max-width: 74ch;
+}
+
+.meta-page section {
+  margin-block: 1.5rem;
+}
+
+.meta-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(8.5rem, 100%), 1fr));
+  gap: 0.8rem;
+  margin-block: 0.8rem;
+}
+
+.meta-stats > div {
+  padding: 0.75rem;
+  background: color-mix(in oklch, canvastext 5%, canvas);
+  border: 1px solid color-mix(in oklch, canvastext 20%, canvas);
+  border-radius: 0.45rem;
+}
+
+.meta-stats dt,
+.commit-tooltip dt {
+  color: color-mix(in oklch, canvastext 75%, canvas);
+  font-size: 0.85rem;
+}
+
+.meta-stats dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.meta-chart-scroll {
+  overflow-x: auto;
+}
+
+#chart svg {
+  display: block;
+  width: 100%;
+  min-width: 32rem;
+}
+
+#chart .meta-gridlines {
+  opacity: 0.17;
+}
+
+#chart .meta-gridlines .domain {
+  display: none;
+}
+
+#chart .meta-axis-label {
+  font-size: 12px;
+  fill: currentColor;
+}
+
+#chart .meta-dots circle {
+  fill: #4d88bd;
+  fill-opacity: 0.72;
+  stroke: canvas;
+  stroke-width: 1px;
+  transition: fill-opacity 150ms;
+}
+
+#chart .meta-dots circle.selected {
+  fill: #dc5479;
+  fill-opacity: 0.95;
+}
+
+#chart .meta-dots a:hover circle,
+#chart .meta-dots a:focus-visible circle {
+  fill-opacity: 1;
+  stroke: canvastext;
+  stroke-width: 1.5px;
+}
+
+#chart .meta-brush .selection {
+  fill: #4d88bd;
+  fill-opacity: 0.18;
+  stroke: #4d88bd;
+  stroke-dasharray: 5 3;
+}
+
+.brush-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+#clear-brush {
+  font: inherit;
+}
+
+.commit-tooltip {
+  position: fixed;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.25rem 0.75rem;
+  max-width: calc(100vw - 1.5rem);
+  box-sizing: border-box;
+  padding: 0.7rem 0.9rem;
+  margin: 0;
+  background: canvas;
+  color: canvastext;
+  border: 1px solid color-mix(in oklch, canvastext 25%, canvas);
+  border-radius: 0.45rem;
+  box-shadow: 0 0.25rem 1rem #0003;
+  font-size: 0.9rem;
+}
+
+.commit-tooltip dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.commit-tooltip[hidden] {
+  display: none;
+}

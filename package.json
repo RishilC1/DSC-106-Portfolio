@@ -1,0 +1,10 @@
+{
+  "name": "dsc-106-portfolio",
+  "private": true,
+  "scripts": {
+    "analyze": "elocuent -i \"{*.{html,css,js},!(node_modules)/**/*.{html,css,js}}\" -o meta/loc.csv --spaces 2"
+  },
+  "devDependencies": {
+    "elocuent": "0.0.4"
+  }
+}
